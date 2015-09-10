@@ -1,29 +1,38 @@
 import React from 'react';
 import Slices from 'slices';
 
-class User extends Slices.Component {
-  constructor(props) {
-    super(props);
-  }
+import Todos from './Todos';
 
-  slicesFromProps(props) {
-    return {
-      user: this.state.slices.getById(props.userId)
-    };
+class User extends React.Component {
+  static propTypes = {
+    user: React.PropTypes.object.isRequired
+    todos: React.PropTypes.arrayOf(React.PropTypes.object).isRequired
   }
 
   render() {
-    var user = this.state.slices.data.user;
-
     return (
       <div>
-        {user.text}
+        <h1>{this.props.user.name}</h1>
+        <Todos todos={this.props.todos} />
       </div>
     );
   }
 }
 
-User.propTypes = { userId: React.PropTypes.string.isRequired };
 
+export default Slices.createClass(User, {
+  static propTypes = { user: React.PropTypes.object.isRequired }
 
-export default User
+  queryParamsFromProps(props, lastProps) {
+    return {
+      userId: props.user.id,
+    };
+  }
+
+  slicesFromQueryParams(queryParams, lastQueryParams) {
+    return {
+      user: this.slices.getByTypeAndId('User', queryParams.userId),
+      todos: this.slices.getTodosByUserId(queryParams.userId),
+    };
+  }
+});

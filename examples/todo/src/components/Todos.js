@@ -9,7 +9,7 @@ class Todos extends React.Component {
   }
 
   render() {
-    var todos = this.props.slices.data.todos.map(todo => (
+    var todos = this.props.todos.map(todo => (
       <Todo key={todo.id} todo={todo} />
     ));
 
