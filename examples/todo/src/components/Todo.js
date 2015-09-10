@@ -17,17 +17,19 @@ class Todo extends React.Component {
 
 
 export default Slices.createClass(Todo, {
-  static propTypes = { todo: React.PropTypes.object.isRequired }
+  propTypes: {
+    todo: React.PropTypes.object.isRequired,
+  },
 
-  queryParamsFromProps(props, lastProps) {
+  queryParamsFromProps: (props, lastProps) => {
     return {
       todoId: props.todo.id,
     };
-  }
+  },
 
-  slicesFromQueryParams(queryParams, lastQueryParams) {
+  dataFromQueryParams(queryParams, lastQueryParams) => {
     return {
-      todo: this.slices.getByTypeAndId('Todo', queryParams.todoId),
+      todo: this.queries.getByTypeAndId('Todo', queryParams.todoId),
     };
-  }
+  },
 });

@@ -21,18 +21,20 @@ class User extends React.Component {
 
 
 export default Slices.createClass(User, {
-  static propTypes = { user: React.PropTypes.object.isRequired }
+  propTypes: {
+    user: React.PropTypes.object.isRequired,
+  },
 
-  queryParamsFromProps(props, lastProps) {
+  queryParamsFromProps: (props, lastProps) => {
     return {
       userId: props.user.id,
     };
-  }
+  },
 
-  slicesFromQueryParams(queryParams, lastQueryParams) {
+  slicesFromQueryParams: (queryParams, lastQueryParams) => {
     return {
       user: this.slices.getByTypeAndId('User', queryParams.userId),
       todos: this.slices.getTodosByUserId(queryParams.userId),
     };
-  }
+  },
 });

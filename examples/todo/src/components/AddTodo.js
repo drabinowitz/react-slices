@@ -46,17 +46,19 @@ class AddTodo extends React.Component {
 
 
 export default Slices.createClass(AddTodo, {
-  static propTypes = { user: React.PropTypes.object.isRequired }
+  propTypes: {
+    user: React.PropTypes.object.isRequired ,
+  },
 
-  queryParamsFromProps(props, lastProps) {
+  queryParamsFromProps: (props, lastProps) => {
     return {
       userId: props.user.id,
     };
-  }
+  },
 
-  slicesFromQueryParams(queryParams, lastQueryParams) {
+  slicesFromQueryParams: (queryParams, lastQueryParams) => {
     return {
       user: this.slices.getByTypeAndId('User', queryParams.userId),
     };
-  }
+  },
 });
