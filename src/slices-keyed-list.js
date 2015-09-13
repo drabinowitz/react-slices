@@ -1,4 +1,4 @@
-class Node extends object {
+class Node extends Object {
   constructor(value, prevNode=null, nextNode=null) {
     this.value = value;
     this.prevNode = prevNode;
@@ -30,7 +30,7 @@ class List extends Object {
   each(callback) {
     let i = 0;
     for (var node = this.head; node !== null; node = node.nextNode){
-      callback(node, i);
+      callback(node.value, i, this);
       i++;
     }
   }
@@ -50,6 +50,18 @@ class KeyedList extends List {
 
   delete(key) {
     if (!this._keys.hasOwnProperty(key)) {throw new Error('key not found')}
+    node = this._keys[key];
+    if (node.prevNode) {
+      node.prevNode.nextNode = node.nextNode;
+    } else {
+      this.head = node.nextNode;
+    }
+    if (node.nextNode) {
+      node.nextNode.prevNode = node.prevNode;
+    } else {
+      this.tail = node.prevNode;
+    }
+    delete this._keys[key];
   }
 }
 
