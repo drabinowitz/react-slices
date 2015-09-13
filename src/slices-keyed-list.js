@@ -61,7 +61,7 @@ class KeyedList extends List {
     } else {
       this.tail = node.prevNode;
     }
-    delete this._keys[key];
+    return delete this._keys[key];
   }
 }
 
