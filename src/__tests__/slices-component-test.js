@@ -23,6 +23,44 @@ describe('slices-component', function() {
     this.createClass = require('../slices-component');
   });
 
+  describe('constructor', function() {
+    it('should expose "this" object with custom methods', function() {
+    });
+  });
+
+  describe('getQueryParamsFromProps', function() {
+    it('should be invoked on willMount/willReceiveProps', function() {
+    });
+
+    it('should be invoked with current/last props and last params', function() {
+    });
+  });
+
+  describe('getSlicesFromQueryParams', function() {
+    it('should be invoked on willMount', function() {
+    });
+
+    context('on componentWillReceiveProps', function() {
+      context('when queryParams change', function() {
+        it('should be invoked', function() {
+        });
+      });
+
+      context('when queryParams dont change', function() {
+        it('should not be invoked', function() {
+        });
+      });
+    });
+
+    it('should be invoked with current/last params and last slice', function() {
+    });
+  });
+
+  describe('setQueryParams', function() {
+    it('should trigger a setState with new slices', function() {
+    });
+  });
+
   context('on componentWillMount', function() {
     it('should add an update callback', function() {
     });
