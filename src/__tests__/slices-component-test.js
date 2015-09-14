@@ -32,7 +32,7 @@ describe('slices-component', function() {
     it('should be invoked on willMount/willReceiveProps', function() {
     });
 
-    it('should be invoked with current/last props and last params', function() {
+    it('should be invoked with current props and last params', function() {
     });
   });
 
@@ -52,7 +52,7 @@ describe('slices-component', function() {
       });
     });
 
-    it('should be invoked with current/last params and last slice', function() {
+    it('should be invoked with current params and last slice', function() {
     });
   });
 
