@@ -1,4 +1,4 @@
-class Node extends Object {
+class Node {
   constructor(value, prevNode=null, nextNode=null) {
     this.value = value;
     this.prevNode = prevNode;
@@ -6,7 +6,7 @@ class Node extends Object {
   }
 }
 
-class List extends Object {
+class List {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -36,7 +36,7 @@ class List extends Object {
   }
 }
 
-class KeyedList extends List {
+export default class KeyedList extends List {
   constructor() {
     super()
     this._keys = {}
@@ -44,7 +44,7 @@ class KeyedList extends List {
 
   append(key, value) {
     if (this._keys.hasOwnProperty(key)) {throw new Error('duplicate key')}
-    var node = super(value);
+    var node = super.append(value);
     this._keys[key] = node;
   }
 
@@ -64,5 +64,3 @@ class KeyedList extends List {
     return delete this._keys[key];
   }
 }
-
-export default KeyedList;

@@ -1,13 +1,10 @@
 jest.dontMock('../slices-n-deep-comparator');
+import nDepthComparator from '../slices-n-deep-comparator';
 
 describe('slices-n-deep-comparator', function() {
-  beforeEach(function() {
-    this.nDepthComparator = require('../slices-n-deep-comparator');
-  });
-
-  context('with depth 0 specified', function() {
+  describe('with depth 0 specified', function() {
     it('should shallow compare', function() {
-      var depth0Comparator = this.nDepthComparator(0);
+      var depth0Comparator = nDepthComparator(0);
 
       expect(depth0Comparator(0, 0)).toBe(true)
       expect(depth0Comparator(10.3, 0)).toBe(false)
@@ -33,9 +30,9 @@ describe('slices-n-deep-comparator', function() {
     });
   });
 
-  context('with depth n specified', function() {
+  describe('with depth n specified', function() {
     it('should compare to depth 1', function() {
-      var depth1Comparator = this.nDepthComparator(1);
+      var depth1Comparator = nDepthComparator(1);
 
       expect(depth1Comparator(0, 0)).toBe(true)
       expect(depth1Comparator(10.3, 0)).toBe(false)
@@ -74,7 +71,7 @@ describe('slices-n-deep-comparator', function() {
     });
 
     it('should compare to depth 2', function() {
-      var depth2Comparator = this.nDepthComparator(2);
+      var depth2Comparator = nDepthComparator(2);
 
       expect(depth2Comparator(0, 0)).toBe(true)
       expect(depth2Comparator(10.3, 0)).toBe(false)

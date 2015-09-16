@@ -1,4 +1,4 @@
-function compareAtDepth (totalDepth, currentDepth=0, valA, valB) {
+const compareAtDepth = function (totalDepth, currentDepth=0, valA, valB) {
   if (valA !== valB) {
     // if at depth dont deep compare
     if (currentDepth === totalDepth) {
@@ -59,7 +59,7 @@ function compareAtDepth (totalDepth, currentDepth=0, valA, valB) {
     }
   }
   return true;
-}
+};
 
 export default function nDepthComparator (depth) {
   return compareAtDepth.bind(null, depth, 0);

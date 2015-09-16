@@ -28,6 +28,8 @@ export function getChangeCursor() {return changeCursor;}
 
 export function change() {
   changeCursor = {};
-  listeners.each(cb => if (cb) {cb()});
+  listeners.each(cb => {
+    if (cb) {cb()}
+  });
   changeCursor = null;
 }

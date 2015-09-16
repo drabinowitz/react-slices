@@ -1,39 +1,37 @@
-jest.dontMock('../keyed-list');
+jest.dontMock('../slices-keyed-list');
+
+import KeyedList from '../slices-keyed-list';
 
 describe('keyed-list', function() {
-  beforeEach(function() {
-    this.KeyedList = require('../keyed-list');
-  });
-
   it('should append entries with keys', function() {
-    var keyedList = new this.KeyedList();
+    var keyedList = new KeyedList();
 
-    expect(keyedList.head).toBe(null);
-    expect(keyedList.tail).toBe(null);
+    expect(keyedList.head).toBeNull();
+    expect(keyedList.tail).toBeNull();
 
     keyedList.append('a', 10);
 
     expect(keyedList.head.value).toBe(10);
-    expect(keyedList.head.prevNode).toBe(null);
-    expect(keyedList.head.nextNode).toBe(null);
+    expect(keyedList.head.prevNode).toBeNull();
+    expect(keyedList.head.nextNode).toBeNull();
 
     expect(keyedList.tail.value).toBe(10);
-    expect(keyedList.tail.prevNode).toBe(null);
-    expect(keyedList.tail.nextNode).toBe(null);
+    expect(keyedList.tail.prevNode).toBeNull();
+    expect(keyedList.tail.nextNode).toBeNull();
 
     keyedList.append('b', 20);
 
     expect(keyedList.head.value).toBe(10);
-    expect(keyedList.head.prevNode).toBe(null);
+    expect(keyedList.head.prevNode).toBeNull();
     expect(keyedList.head.nextNode.value).toBe(20);
 
     expect(keyedList.tail.value).toBe(20);
     expect(keyedList.tail.prevNode.value).toBe(10);
-    expect(keyedList.tail.nextNode).toBe(null);
+    expect(keyedList.tail.nextNode).toBeNull();
   });
 
   it('should remove an entry by its key', function() {
-    var keyedList = new this.KeyedList();
+    var keyedList = new KeyedList();
 
     keyedList.append('a', 10);
     keyedList.append('b', 20);
@@ -41,33 +39,33 @@ describe('keyed-list', function() {
     keyedList.delete('a');
 
     expect(keyedList.head.value).toBe(20);
-    expect(keyedList.head.prevNode).toBe(null);
-    expect(keyedList.head.nextNode).toBe(null);
+    expect(keyedList.head.prevNode).toBeNull();
+    expect(keyedList.head.nextNode).toBeNull();
 
     expect(keyedList.tail.value).toBe(20);
-    expect(keyedList.tail.prevNode).toBe(null);
-    expect(keyedList.tail.nextNode).toBe(null);
+    expect(keyedList.tail.prevNode).toBeNull();
+    expect(keyedList.tail.nextNode).toBeNull();
 
     keyedList.append('c');
     keyedList.delete('c');
 
     expect(keyedList.head.value).toBe(20);
-    expect(keyedList.head.prevNode).toBe(null);
-    expect(keyedList.head.nextNode).toBe(null);
+    expect(keyedList.head.prevNode).toBeNull();
+    expect(keyedList.head.nextNode).toBeNull();
 
     expect(keyedList.tail.value).toBe(20);
-    expect(keyedList.tail.prevNode).toBe(null);
-    expect(keyedList.tail.nextNode).toBe(null);
+    expect(keyedList.tail.prevNode).toBeNull();
+    expect(keyedList.tail.nextNode).toBeNull();
 
     keyedList.delete('b');
 
-    expect(keyedList.head).toBe(null);
-    expect(keyedList.tail).toBe(null);
+    expect(keyedList.head).toBeNull();
+    expect(keyedList.tail).toBeNull();
   });
 
   it('should iterate left to right through the list', function() {
     var mock = jest.genMockFunction();
-    var keyedList = new this.KeyedList();
+    var keyedList = new KeyedList();
 
     keyedList.append('a', 10);
     keyedList.append('b', 20);

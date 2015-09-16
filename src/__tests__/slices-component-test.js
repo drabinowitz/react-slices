@@ -40,13 +40,13 @@ describe('slices-component', function() {
     it('should be invoked on willMount', function() {
     });
 
-    context('on componentWillReceiveProps', function() {
-      context('when queryParams change', function() {
+    describe('on componentWillReceiveProps', function() {
+      describe('when queryParams change', function() {
         it('should be invoked', function() {
         });
       });
 
-      context('when queryParams dont change', function() {
+      describe('when queryParams dont change', function() {
         it('should not be invoked', function() {
         });
       });
@@ -61,47 +61,47 @@ describe('slices-component', function() {
     });
   });
 
-  context('on componentWillMount', function() {
+  describe('on componentWillMount', function() {
     it('should add an update callback', function() {
     });
   });
 
-  context('on componentWillReceiveProps', function() {
-    context('when not updating', function() {
-      context('if the updates change query params', function() {
+  describe('on componentWillReceiveProps', function() {
+    describe('when not updating', function() {
+      describe('if the updates change query params', function() {
         it('should setState with the new slices', function() {
         });
       });
 
-      context('if the updates do not change query params', function() {
+      describe('if the updates do not change query params', function() {
         it('should not setState', function() {
         });
       });
     });
 
-    context('when updating', function() {
+    describe('when updating', function() {
       it('should setState with new slices', function() {
       });
     });
   });
 
-  context('on update handler change', function() {
-    context('if component change cursor === update cursor', function() {
+  describe('on update handler change', function() {
+    describe('if component change cursor === update cursor', function() {
       it('should not setState', function() {
       });
-    }):
-    context('if component change cursor !== update cursor', function() {
+    });
+    describe('if component change cursor !== update cursor', function() {
       it('should setState with new slices', function() {
       });
-    }):
+    });
   });
 
-  context('on render', function() {
+  describe('on render', function() {
     it('should render the wrapped component passing props', function() {
     });
   });
 
-  context('on componentWillUnmount', function() {
+  describe('on componentWillUnmount', function() {
     it('should remove the update callback', function() {
     });
   });
